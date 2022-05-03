@@ -1,2 +1,2 @@
 # Dino-Project-
-Udacity procject - Intermediate 
+Udacity project - Javascript Intermediate 
