@@ -1,2 +1,2 @@
-# Dino-Project-
+# dino-project-
 Udacity project - Javascript Intermediate 
