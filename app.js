@@ -16,7 +16,7 @@ function dinosaur(species, weight, height, diet, where, when, fact) {
 
 function human(name, weight, height, diet) {
   this.species = "human";
-  this.fact = "Random Fact"
+  this.fact = "Random Fact";
   this.name = name;
   this.weight = weight;
   this.height = height;
@@ -29,12 +29,19 @@ fetch("dino.json")
     return response.json();
   })
   .then((data) => {
-    data.Dinos.forEach(dino =>{
-      let dinoObj = new dinosaur(dino.species, dino.weight, dino.height, dino.diet, dino.where, dino.when, dino.fact)
-      dinoArr.push(dinoObj)
-    })
+    data.Dinos.forEach((dino) => {
+      let dinoObj = new dinosaur(
+        dino.species,
+        dino.weight,
+        dino.height,
+        dino.diet,
+        dino.where,
+        dino.when,
+        dino.fact
+      );
+      dinoArr.push(dinoObj);
+    });
   });
-
 
 function getHumanData() {
   return (function () {
@@ -52,28 +59,27 @@ function getHumanData() {
 function populateTiles() {
   let humanData = getHumanData();
   clearScreen(formRef);
-  dinoArr.splice(4,0,humanData);
-  for (let i = 0; i < dinoArr.length; i++){
-    const tile = document.createElement("div")
-    tile.className = "grid-item"
-    tile.innerHTML = `<h2>${dinoArr[i].species}</h2> <img src="images/${dinoArr[i].species.toLowerCase()}.png"/> <h3>${dinoArr[i].fact}</h3>`
-    document.querySelector("#grid").appendChild(tile)
+  dinoArr.splice(4, 0, humanData);
+  for (let i = 0; i < dinoArr.length; i++) {
+    const tile = document.createElement("div");
+    tile.className = "grid-item";
+    tile.innerHTML = `<h2>${dinoArr[i].species}</h2> <img src="images/${dinoArr[
+      i
+    ].species.toLowerCase()}.png"/> <h3>${dinoArr[i].fact}</h3>`;
+    document.querySelector("#grid").appendChild(tile);
   }
 }
 
-function heightDifference(){
-  return (dinosaur.height - humanHeight);
+function heightDifference() {
+  return dinosaur.height - humanHeight;
 }
 console.log(heightDifference);
 
-function dietDifference(){
-  return (dinosaur.diet);
+function dietDifference() {
+  return dinosaur.diet;
 }
 console.log(dietDifference);
 
-
 button.addEventListener("click", () => {
- 
-  populateTiles()
+  populateTiles();
 });
-
